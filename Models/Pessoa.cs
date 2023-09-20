@@ -9,11 +9,12 @@ namespace Exemplo_Explorando.Models
     {
         public Pessoa()
         {
-            
+           
         }
         public Pessoa(string nome, string sobreNome)
         {
-            
+           NomePessoa = nome;
+           SobreNome = sobreNome; 
         }
         private string _nomePessoa;
         private int _idade;
