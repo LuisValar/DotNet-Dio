@@ -40,21 +40,122 @@ Console.WriteLine(data.ToShortDateString());
 Console.WriteLine(data.ToShortTimeString());
 
 // Conversão de horas
-string dataString  = "20-09-2023 10:30";
-bool sucessoData = DateTime.TryParseExact(dataString, 
-                                            "yyyy-MM-dd HH:mm", 
-                                            CultureInfo.InvariantCulture, 
-                                            DateTimeStyles.None, 
+string dataString = "01/01/2021";
+bool sucessoData = DateTime.TryParseExact(dataString,
+                                            "dd/MM/YYYY",
+                                            CultureInfo.InvariantCulture,
+                                            DateTimeStyles.None,
                                             out data);
-if(sucessoData)
+if (sucessoData)
 {
-    Console.WriteLine($"Conversão de data realizada com sucesso, Data: {data}" );
-}else{
+    Console.WriteLine($"Conversão de data realizada com sucesso, Data: {data}");
+}
+else
+{
     Console.WriteLine($"{dataString} não é uma data válida.");
 }
-                        
 
+#endregion
 
+#region 
+try
+{
+    string[] linhas = File.ReadAllLines("Arquivos/arquivoLeitura.txt");
+
+    foreach (string linha in linhas)
+    {
+        Console.WriteLine(linha);
+    }
+
+}
+catch (DirectoryNotFoundException ex)
+{
+    Console.WriteLine($"Ocorreu uma exeção de diretorio não encontrado. {ex}");
+}
+catch (FileNotFoundException ex)
+{
+    Console.WriteLine($"Ocorreu uma exeção de arquivo não encontrado. {ex}");
+}
+finally
+{
+    Console.WriteLine("Chegou até aqui!");
+}
+#endregion
+
+//new ExemploExcecao().Metodo1(); 
+
+#region//Filas
+Queue<int> fila = new Queue<int>();
+
+fila.Enqueue(2);
+fila.Enqueue(4);
+fila.Enqueue(6);
+fila.Enqueue(8);
+
+foreach(int i in fila)
+{
+    Console.WriteLine(i);
+}
+//Sempre remove o primeiro elemento
+Console.WriteLine($"Removendo o elemento: {fila.Dequeue()}");
+foreach(int i in fila)
+{
+    Console.WriteLine(i);
+}
+#endregion
+
+#region //Pilhas
+Console.WriteLine("Aqui jás uma pilha");
+Stack<int> pilha = new Stack<int>();
+pilha.Push(4);
+pilha.Push(6);
+pilha.Push(8);
+pilha.Push(10);
+
+foreach(int i in pilha)
+{
+    Console.WriteLine(i);
+}
+
+Console.WriteLine($"Removendo o elemento do topo: {pilha.Pop()}");
+
+foreach(int i in pilha)
+{
+    Console.WriteLine(i);
+}
+#endregion
+
+#region //Dictionary
+
+Dictionary<string, string> estados = new Dictionary<string, string>();
+
+estados.Add("RS", "Rio Grande do Sul");
+estados.Add("SC", "Santa Catarina");
+estados.Add("PR", "Parana");
+
+foreach(var i in estados)
+{
+    Console.WriteLine($"Chave: {i.Key}, Valor: {i.Value}");
+}
+
+Console.WriteLine("-----------------");
+
+estados.Remove("PR");
+estados["SC"] = "Santa Catarina editada";
+foreach(var i in estados)
+{
+    Console.WriteLine($"Chave: {i.Key}, Valor: {i.Value}");
+}
+string chave = "BA";
+Console.WriteLine($"Verificando o elemento: {chave}");
+if(estados.ContainsKey(chave))
+{
+    Console.WriteLine("Valor existente");
+}
+else
+{
+    Console.WriteLine($"Valor inexistente. o valor {chave} pode ser add.");
+}
 #endregion
 
 
