@@ -82,8 +82,6 @@ finally
 }
 #endregion
 
-//new ExemploExcecao().Metodo1(); 
-
 #region//Filas
 Queue<int> fila = new Queue<int>();
 
@@ -158,6 +156,49 @@ else
 }
 #endregion
 
+#region //Tuplas
+(int id, string nome, string sobreNome) tupla = (28, "Luis Henrique", "Valar");
+Console.WriteLine(tupla.id);
+
+// outra forma de tupla
+ValueTuple<int, string, string> outroExemploTupla = (28, "Luis Henrique", "valar");
+var maisUmaTupla = Tuple.Create(28, "Luis Henrique", "valar");
+#endregion
+
+LeituraArquivo arquivo = new LeituraArquivo();
+var (Sucesso, LinhasArquivo, QtdLinhas) = arquivo.LerArquivo("Arquivos/arquivoLeitura.txt");
+
+if(Sucesso)
+{
+    Console.WriteLine("quantidade linhas do arquivo: " + QtdLinhas);
+    foreach(string linha in LinhasArquivo)
+        Console.WriteLine(linha);
+}
+else
+    Console.WriteLine("Não foi possivel ler o arquivo");
+
+
+Pessoa p1 = new Pessoa("Luis Henrique", "Valar");
+(string nome, string sobrenome) = p1;
+
+
+#region //if ternario
+
+int numeroParOuImpar = 20;
+bool ehpar = false;
+
+//não ternario
+if(numeroParOuImpar % 2 == 0)
+    Console.WriteLine($"O numero {numeroParOuImpar} é par");
+else
+    Console.WriteLine($"O numero {numeroParOuImpar} é impar");
+
+//if ternario
+ehpar = numeroParOuImpar % 2 == 0;
+Console.WriteLine($"O numero {numeroParOuImpar} é " + (ehpar ? "par" : "impar"));
+
+#endregion
+//new ExemploExcecao().Metodo1(); 
 
 
 /*Pessoa p1 = new Pessoa("Luis Henrique", "Valar");
