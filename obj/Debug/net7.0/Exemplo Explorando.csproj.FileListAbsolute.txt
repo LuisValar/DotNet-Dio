@@ -12,3 +12,6 @@ C:\Projetos\dotnet\Exemplo Explorando\obj\Debug\net7.0\refint\Exemplo Explorando
 C:\Projetos\dotnet\Exemplo Explorando\obj\Debug\net7.0\Exemplo Explorando.pdb
 C:\Projetos\dotnet\Exemplo Explorando\obj\Debug\net7.0\Exemplo Explorando.genruntimeconfig.cache
 C:\Projetos\dotnet\Exemplo Explorando\obj\Debug\net7.0\ref\Exemplo Explorando.dll
+C:\Projetos\dotnet\Exemplo Explorando\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Projetos\dotnet\Exemplo Explorando\obj\Debug\net7.0\Exemplo Explorando.csproj.AssemblyReference.cache
+C:\Projetos\dotnet\Exemplo Explorando\obj\Debug\net7.0\Exemplo Explorando.csproj.CopyComplete

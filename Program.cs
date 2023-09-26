@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Exemplo_Explorando.Models;
 using System.Globalization;
+using Newtonsoft.Json;
 
 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
 
@@ -183,8 +184,10 @@ Pessoa p1 = new Pessoa("Luis Henrique", "Valar");
 
 
 #region //if ternario
-
 int numeroParOuImpar = 20;
+
+par = numeroParOuImpar.Ehpar();
+
 bool ehpar = false;
 
 //não ternario
@@ -198,6 +201,52 @@ ehpar = numeroParOuImpar % 2 == 0;
 Console.WriteLine($"O numero {numeroParOuImpar} é " + (ehpar ? "par" : "impar"));
 
 #endregion
+
+bool? desejaReceberEmail = null;
+if(desejaReceberEmail.HasValue && desejaReceberEmail.Value)
+    Console.WriteLine("O Usuário optou por receber e-mail!");
+else
+    Console.WriteLine("O Usuário optou por não receber e-mail!");
+
+string conteudoArquivo = File.ReadAllText("Arquivos/vendas.Json");
+
+List<Venda> listaVenda = JsonConvert.DeserializeObject<List<Venda>>(conteudoArquivo);
+
+foreach (Venda venda in listaVenda)
+{
+    Console.WriteLine($"ID: {venda.Id}, Produto: {venda.Produto}, Preço: {venda.Preco}, Data: {venda.DataVenda.ToString("dd/MM/yyyy HH:mm")}, Desconto: {venda.Desconto}");
+}
+
+#region //Tipo Anonimo
+
+var tipoAnonimo = new { Nome = "Luis", sobrenome = "Valar", Altura = 1.80 };
+Console.WriteLine("Nome: " + tipoAnonimo.Nome);
+Console.WriteLine("SobreNome: " + tipoAnonimo.sobrenome);
+Console.WriteLine("Altura: " + tipoAnonimo.Altura);
+
+//Retorno de coleção
+var listaAnonimo = listaVenda.Select(x => new{x.Produto, x.Preco});
+
+foreach(var venda in listaAnonimo)
+    Console.WriteLine($"Produto: {venda.Produto}, preço: {venda.Preco}");
+
+#endregion
+
+#region //Tipo dinamico
+
+dynamic variavelDinamica = 4;
+Console.WriteLine($"Tipo da variável:  {variavelDinamica.GetType()}, Valor: {variavelDinamica}");
+
+#endregion
+
+#region //Classe generica
+
+MeuArray<int> arrayInteiro = new MeuArray<int>();
+arrayInteiro.AdicionarElementoArray(30);
+
+Console.WriteLine(arrayInteiro[0]);
+#endregion
+
 //new ExemploExcecao().Metodo1(); 
 
 

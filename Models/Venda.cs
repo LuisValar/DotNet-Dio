@@ -21,5 +21,6 @@ namespace Exemplo_Explorando.Models
         public string Produto { get; set; } 
         public decimal Preco { get; set; } 
         public DateTime DataVenda { get; set; }
+        public decimal? Desconto { get; set; }
     }
 }
